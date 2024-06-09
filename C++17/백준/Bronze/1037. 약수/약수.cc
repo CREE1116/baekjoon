@@ -5,14 +5,17 @@ using namespace std;
 int main() {
   int count;
   cin >> count;
-  long* arr = new long[count];
+  long min, max, temp;
+  ;
   for (int i = 0; i < count; i++) {
-    cin >> arr[i];
+    cin >> temp;
+    if (i == 0) {
+      min = temp;
+      max = temp;
+    } else {
+      if (min > temp) min = temp;
+      if (max < temp) max = temp;
+    }
   }
-  sort(arr, arr + count);
-  if (count % 2 == 1) {
-    cout << arr[count / 2] * arr[count / 2] << endl;
-  } else {
-    cout << (arr[count / 2] * arr[count / 2 - 1]) << endl;
-  }
+  cout << min * max << endl;
 }
