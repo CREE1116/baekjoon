@@ -22,25 +22,13 @@ char wargame() {
     B_Vector.push_back(temp);
   }
 
-  sort(S_Vector.begin(), S_Vector.end());
-  sort(B_Vector.begin(), B_Vector.end());
+  int max_S = *max_element(S_Vector.begin(), S_Vector.end());
+  int max_B = *max_element(B_Vector.begin(), B_Vector.end());
 
-  while (min(S_Vector.size(), B_Vector.size()) > 0) {
-    if (S_Vector[0] > B_Vector[0]) {
-      B_Vector.erase(B_Vector.begin());
-    } else if (S_Vector[0] < B_Vector[0]) {
-      S_Vector.erase(S_Vector.begin());
-    } else if (S_Vector[0] == B_Vector[0]) {
-      B_Vector.erase(B_Vector.begin());
-    }
-  }
-
-  if (S_Vector.size() > 0) {
-    return 'S';
-  } else if (B_Vector.size() > 0) {
+  if (max_S < max_B) {
     return 'B';
   } else {
-    return 'C';
+    return 'S';
   }
 }
 
